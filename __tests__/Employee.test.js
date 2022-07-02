@@ -16,5 +16,22 @@ test("gets employee's name as an object", () => {
 });
 
 // getId
+test("gets employee's ID number as an object", () => {
+   const employee = new Employee();
+
+   expect(employee.getId()).toHaveProperty('id');
+});
+
 // getEmail
+test("gets employee's email as an object", () => {
+   const employee = new Employee();
+
+   expect(employee.getEmail()).toHaveProperty('email');
+});
+
 // getRole
+// test("gets employee's role as an object", () => {
+//    const employee = new Employee();
+
+//    expect(employee.getId()).toHaveProperty('id');
+// });
