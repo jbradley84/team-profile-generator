@@ -5,7 +5,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 //const generatePage = require('./src/page-template');
 
-const team = [];
+const teamArray = [];
 let employee;
 
 const banner = () => {
@@ -44,11 +44,14 @@ const promptManager = () => {
          const { name, id, email, officeNumber } = managerData;
          const manager = new Manager(name, id, email, officeNumber);
 
-         team.push(manager);
+         teamArray.push(manager);
+         banner();
+         teamMenu();
       });
 };
 
 const teamMenu = () => {
+   console.log("Hold up.")
    return inquirer.prompt([
       {
          type: "list",
@@ -65,7 +68,8 @@ const teamMenu = () => {
       } else if (role === "Add an INTERN") {
          promptIntern();
       } else if (role === "FINISH BUILDING TEAM") {
-         return team;
+         console.log(teamArray);
+         return teamArray;
       }
    })
    
@@ -98,8 +102,8 @@ const promptEngineer = () => {
       let { name, id, email, github } = employeeData;
       
       employee = new Engineer(name, id, email, github);
-      team.push(employee);
-      return teamMenu(team);
+      teamArray.push(employee);
+      return teamMenu();
    })
 }
 
@@ -130,16 +134,10 @@ const promptIntern = () => {
       let { name, id, email, school } = employeeData;
       
       employee = new Intern(name, id, email, school);
-      team.push(employee);
-      return teamMenu(team);
+      teamArray.push(employee);
+      return teamMenu();
    })
 }
 
 promptManager()
-   .then(banner)
-   .then(teamMenu)
-   .then(team => {
-      console.log(team);
-   })
-   
    
