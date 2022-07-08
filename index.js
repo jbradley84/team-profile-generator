@@ -3,7 +3,7 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-//const generatePage = require('./src/page-template');
+const generatePage = require('./src/page-template');
 
 const teamArray = [];
 let employee;
@@ -51,7 +51,6 @@ const promptManager = () => {
 };
 
 const teamMenu = () => {
-   console.log("Hold up.")
    return inquirer.prompt([
       {
          type: "list",
@@ -69,7 +68,7 @@ const teamMenu = () => {
          promptIntern();
       } else if (role === "FINISH BUILDING TEAM") {
          console.log(teamArray);
-         return teamArray;
+         return generatePage(teamArray);
       }
    })
    
@@ -139,5 +138,5 @@ const promptIntern = () => {
    })
 }
 
-promptManager()
+promptManager();
    
