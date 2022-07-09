@@ -5,6 +5,9 @@
 
 A command-line app that prompts users to answer questions pertaining to a software engineering team, which then generates an HTML webpage that displays summaries of each employee.
 
+### Demo
+[Click here to watch demo](https://drive.google.com/file/d/1YTnzT8reaa_c6tZvneRovf3iRx5GhhzJ/view)
+
 ![ScreenShot](./assets/images/team-profile-generator-screenshot.png)
 
 ## Built With
