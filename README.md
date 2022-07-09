@@ -9,7 +9,7 @@ A command-line app that prompts users to answer questions pertaining to a softwa
 
 ## Built With
 
-JS, NodeJS, Inquirer, , Jest, Tailwind, Font Awesome
+JS, NodeJS, Inquirer, Jest, Tailwind, Font Awesome
 
 ## License
 
