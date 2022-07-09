@@ -7,6 +7,7 @@ const generatePage = require('./src/page-template');
 
 const teamArray = [];
 let employee;
+let html;
 
 const banner = () => {
    console.log(`
@@ -17,7 +18,7 @@ const banner = () => {
 };
 
 const promptManager = () => {
-   // run manager prompt
+   console.log("inside prompt manager")
    return inquirer.prompt([
       {
          type: "input",
@@ -43,8 +44,9 @@ const promptManager = () => {
       .then(managerData => {
          const { name, id, email, officeNumber } = managerData;
          const manager = new Manager(name, id, email, officeNumber);
-
+         
          teamArray.push(manager);
+         console.log(teamArray);
          banner();
          teamMenu();
       });
@@ -68,7 +70,11 @@ const teamMenu = () => {
          promptIntern();
       } else if (role === "FINISH BUILDING TEAM") {
          console.log(teamArray);
-         return generatePage(teamArray);
+         // html = generateTeam(teamArray);
+         // console.log(html);
+         html = generatePage(teamArray);
+         console.log(html);
+         writeFile(html);
       }
    })
    
@@ -138,5 +144,26 @@ const promptIntern = () => {
    })
 }
 
-promptManager();
+const writeFile = data => {
+   fs.writeFile("./dist/index.html", data, err => {
+      if (err) {
+         console.log(err);
+         return;
+      } else {
+         console.log("Team Page created! View HTML file in dist folder.")
+      }
+   })
+};
+
+// const init = () => {
+//    console.log("inside init");
+//    promptManager()
+//       .then(banner)
+//       .then(teamMenu)
+//       .then((() => fs.writeFileSync('./dist/index.html', generatePage(teamArray))))
+//       .then(() => console.log("Successfully wrote to index.html!"))
+//       .catch((err) => console.error(err));
+//}
+
    
+promptManager();
